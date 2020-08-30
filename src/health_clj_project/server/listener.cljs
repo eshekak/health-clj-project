@@ -11,14 +11,16 @@
 
 (defn send-error
   [err res]
-  ((.writeHead res 404)
-   (.end res (stringify-err err))))
+  (do 
+    (.writeHead res 404)
+    (.end res (stringify-err err))))
 
 
 (defn send-content
   [content res]
-  ((.writeHead res 200)
-   (.end res content)))
+  (do 
+    (.writeHead res 200)
+    (.end res content)))
 
 
 (defn get-url
