@@ -11,14 +11,14 @@
 
 (defn send-error
   [err res]
-  (do 
+  (do
     (.writeHead res 404)
     (.end res (stringify-err err))))
 
 
 (defn send-content
   [content res]
-  (do 
+  (do
     (.writeHead res 200)
     (.end res content)))
 
