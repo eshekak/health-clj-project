@@ -29,5 +29,5 @@
 
 
 (when-not (valid-commit-msg?)
-    (print-error-msg)
-    (System/exit 1))
+  (print-error-msg)
+  (System/exit 1))
