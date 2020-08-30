@@ -12,7 +12,7 @@ WORKDIR /app
 
 COPY ./ ./
 
-RUN clojure -m cljs.main -t node -d ./public -o ./public/server.js -c health-clj-project.server.index
+RUN clojure -m cljs.main -O simple -t node -d ./public -o ./public/server.js -c health-clj-project.server.index
 
 
 FROM node:12-alpine as runner
