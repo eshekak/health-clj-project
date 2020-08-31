@@ -1,4 +1,4 @@
-name: Deploy master on prod 
+name: Build and Deploy master on prod
 
 on:
   push:
@@ -13,8 +13,8 @@ env:
   IMAGE: health-clj-project
 
 jobs:
-  setup-deploy:
-    name: Setup and Deploy
+  setup-build-publish-deploy:
+    name: Setup, Build, Publish, and Deploy
     runs-on: ubuntu-latest
 
     steps:
@@ -32,6 +32,18 @@ jobs:
 
     - run: |-
         gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
+
+    - name: Build
+      run: |-
+        docker build \
+          --tag "gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA" \
+          --build-arg GITHUB_SHA="$GITHUB_SHA" \
+          --build-arg GITHUB_REF="$GITHUB_REF" \
+          .
+
+    - name: Publish
+      run: |-
+        docker push "gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA"
 
     - name: Deploy
       run: |-
