@@ -9,6 +9,6 @@
        "<title>Fullstack pet project in ClojureScript!!!</title>"
        "</head>"
        "<body>"
-       "<div>Fullstack pet project in ClojureScript</div>"
+       "<div>Fullstack pet project in ClojureScript!!!</div>"
        "</body>"
        "</html"))
