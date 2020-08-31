@@ -1,1 +1,1 @@
-# Fullstack Clojure pet project
+# Fullstack ClojureScript pet project

@@ -1,0 +1,12 @@
+name: PR to master
+on:
+  pull_request:
+    branches:
+      - master
+jobs:
+  pr-check:
+    runs-on: my-ubuntu
+    steps:
+      - uses: actions/checkout@v1
+      - name: PR check
+        run: bb -f ./.github/common-scripts/pr-check.clj '^(master|(feat\/[a-z0-9._-]+))$' ${{github.event.pull_request.head.ref}} ${{github.event.pull_request.title}} ${{github.event.pull_request.body}}
