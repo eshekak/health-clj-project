@@ -53,5 +53,4 @@ jobs:
 
     - name: Deploy
       run: |-
-        kubectl set image "deployment/$DEPLOYMENT_NAME" "gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA"="gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA"
-
+        kubectl set image "deployment/$DEPLOYMENT_NAME" "$DEPLOYMENT_NAME"="gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA"
