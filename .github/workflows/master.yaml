@@ -4,7 +4,7 @@ on:
     branches:
       - master
 jobs:
-  PR check:
+  pr-check:
     runs-on: my-ubuntu
     steps:
       - uses: actions/checkout@v1
