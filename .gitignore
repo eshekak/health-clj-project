@@ -1,5 +1,5 @@
 .cpcache
 node_modules
-tests
+./tests
 public
 !public/assets
