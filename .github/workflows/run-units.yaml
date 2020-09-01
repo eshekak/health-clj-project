@@ -7,10 +7,10 @@ on:
     branches:
       - feat/**
 jobs:
-  pr-check:
+  run-units:
     runs-on: my-ubuntu
     steps:
       - uses: actions/checkout@v1
 
       - name: Run units
-        run: bb -f .github/common-scripts/run-units.clj
+        run: bb -f ./.github/common-scripts/run-units.clj
