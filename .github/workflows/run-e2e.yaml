@@ -1,0 +1,20 @@
+name: Run e2e
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - feat/**
+jobs:
+  run-units:
+    runs-on: my-ubuntu
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Run units
+        run: bb -f ./.github/common-scripts/run-units.clj
+
+      - name: Check when deployment is done
+        if: ${{! kubectl get pods | grep "Terminating"}}
+        run: bb -f ./.github/common-scripts/run-e2e.clj
